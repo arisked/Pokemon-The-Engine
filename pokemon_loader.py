@@ -10,9 +10,10 @@ def load_pokemon_data(file_path: str) -> List[Pokemon]:
     pokemon_list = []
     for _, row in df.iterrows():
         moves_list = row['Moves'].split(', ')
+        types = [t.strip() for t in row['Type'].split(',')] # Properly split the type for dual type Pokemon
         pokemon = Pokemon(
             name=row['Name'],
-            types=[row['Type']],
+            types=types,
             hp=row['HP'],
             attack=row['Attack'],
             defense=row['Defense'],
