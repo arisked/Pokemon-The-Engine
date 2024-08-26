@@ -54,6 +54,7 @@ def load_move_data(file_path: str) -> Dict[str, Move]:
 def link_pokemon_moves(pokemon_list: List[Pokemon], move_dict: Dict[str, Move]):
     for pokemon in pokemon_list:
         moves = [move_dict.get(move_name, None) for move_name in pokemon.moves_list]
+        pokemon.moves = [move for move in moves if move is not None]
 
 def load_pokemon_list(file_path: str) -> List[Pokemon]:
     pokemon_list = load_pokemon_data(file_path)
